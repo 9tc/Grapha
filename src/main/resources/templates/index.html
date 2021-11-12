@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Grapha</title>
+    <style type="text/css">
+        textarea {
+            resize: none;
+            width:100px;
+            height:200px;
+        }
+    </style>
+</head>
+<body>
+<form action="#" th:action="@{/confirm}" method="GET">
+    <p>
+        <label for="vertices">頂点数(1-100)：</label>
+        <input id="vertices" name="vertices" type="number" size="40" th:min="1" th:max="100" th:value="${vertices}"/>
+    </p>
+    <p>
+        <label for="percentage">確率(0-100)：</label>
+        <input id="percentage" name="percentage" type="number" size="40" th:min="0" th:max="100" th:value="${percentage}"/>
+    </p>
+    <p>
+        <input type="submit" value="送信" />
+    </p>
+</form>
+
+<p>
+    <label>頂点数：</label>
+    <label th:text="${vertices}">頂点数</label>
+</p>
+<p>
+    <label>確率：</label>
+    <label th:text="${percentage}">確率</label>%
+</p>
+<p>
+    <label>データセット</label><br>
+    <textarea th:text="${dataset}" readonly="true"></textarea>
+</p>
+</body>
+</html>
