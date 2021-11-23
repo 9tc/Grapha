@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th ="http://www.thymeleaf.org">
+<html xmlns:th ="http://www.thymeleaf.org" lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>Grapha</title>
@@ -12,14 +12,17 @@
     </style>
 </head>
 <body>
-<form action="#" th:action="@{/confirm}" method="GET">
+<form th:action="@{/confirm}" method="GET" th:object="${form}">
     <p>
         <label for="vertices">頂点数(1-100)：</label>
-        <input id="vertices" name="vertices" type="number" size="40" th:min="1" th:max="100" th:value="${vertices}"/>
+        <input id="vertices" name="vertices" type="number" size="40" th:min="1" th:max="100" th:value="${vertices} ? ${vertices} : 1"/>
     </p>
     <p>
         <label for="percentage">確率(0-100)：</label>
-        <input id="percentage" name="percentage" type="number" size="40" th:min="0" th:max="100" th:value="${percentage}"/>
+        <input id="percentage" name="percentage" type="number" size="40" th:min="0" th:max="100" th:value="${percentage} ? ${percentage} : 0"/>
+    </p>
+    <p>
+        <input type="checkbox" name="hasLabel" th:value="${hasLabel}" th:text="頂点にランダムラベルを付与"/>
     </p>
     <p>
         <input type="submit" value="送信" />
@@ -36,7 +39,7 @@
 </p>
 <p>
     <label>データセット</label><br>
-    <textarea th:text="${dataset}" readonly="true"></textarea>
+    <textarea readonly="true" th:text="${dataset}"></textarea>
 </p>
 </body>
 </html>
