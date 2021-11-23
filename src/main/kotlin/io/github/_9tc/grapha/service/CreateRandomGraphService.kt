@@ -4,7 +4,8 @@ class CreateRandomGraphService(
     private val vertices: Long,
     private val percentage: Long
 ) {
-    fun create(): String{
+    fun create(hasLabel : Boolean): String{
+        var s = ""
         val dataset : MutableList<Pair<Long, Long>> = mutableListOf()
         var edges = 0
 
@@ -17,10 +18,21 @@ class CreateRandomGraphService(
             }
         }
 
-        var s = "$vertices $edges\n"
+        s = "$vertices $edges\n"
+
+
+        if(hasLabel){
+            for(v in 1..vertices){
+                s += v.toString() + " " + ('a'..'z').random() + ('a'..'z').random() + ('a'..'z').random() + "\n"
+            }
+        }
+
         for (data in dataset){
             s += "${data.first} ${data.second}\n"
         }
         return s
+
     }
+
+
 }

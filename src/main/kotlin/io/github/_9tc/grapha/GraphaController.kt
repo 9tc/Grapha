@@ -23,7 +23,9 @@ class GraphaController {
         model.addAttribute("vertices", form.vertices)
         model.addAttribute("percentage", form.percentage)
         model.addAttribute("hasLabel", form.hasLabel)
-        model.addAttribute("dataset", CreateRandomGraphService(form.vertices!!, form.percentage!!).create())
+
+        val hasLabel : Boolean = (form.hasLabel == "checked")
+        model.addAttribute("dataset", CreateRandomGraphService(form.vertices!!, form.percentage!!).create(hasLabel))
         return "index"
     }
 }

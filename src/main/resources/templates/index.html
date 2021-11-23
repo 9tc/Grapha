@@ -22,7 +22,7 @@
         <input id="percentage" name="percentage" type="number" size="40" th:min="0" th:max="100" th:value="${percentage} ? ${percentage} : 0"/>
     </p>
     <p>
-        <input type="checkbox" name="hasLabel" th:value="${hasLabel}" th:text="頂点にランダムラベルを付与"/>
+        <input type="checkbox" id="hasLabel" name="hasLabel" value="checked" th:text="頂点にランダムラベルを付与"/>
     </p>
     <p>
         <input type="submit" value="送信" />

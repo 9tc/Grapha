@@ -13,6 +13,6 @@ class InputForm (
     @field:Range(min=0, max=100, message = "確率が範囲を超えています")
     var percentage: Long? = 0,
 
-    var hasLabel : Boolean = false
+    var hasLabel : String? = null
         ){
 }
