@@ -26,8 +26,9 @@ class GraphaController {
         model.addAttribute("percentage", form.percentage)
         model.addAttribute("hasLabel", form.hasLabel)
 
-        var seed: Long = if(form.seed == null) (Math.random() * 1e10).toLong() else form.seed!!
-        model.addAttribute("seed", seed)
+        val seed: Long = if(form.seed == null) (Math.random() * 1e10).toLong() else form.seed!!
+        model.addAttribute("seedout", seed)
+        if(form.seed != null) model.addAttribute("seed", seed)
 
         val hasLabel : Boolean = (form.hasLabel == "checked")
         model.addAttribute("dataset", CreateRandomGraphService(form.vertices!!, form.percentage!!).create(hasLabel, seed))
