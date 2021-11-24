@@ -10,6 +10,13 @@
             height:200px;
         }
     </style>
+
+    <script type="text/javascript">
+        let clipboardCopy = function(){
+            document.getElementById("dataset").select();
+            document.execCommand("copy");
+        }
+    </script>
 </head>
 <body>
 <form th:action="@{/confirm}" method="GET" th:object="${form}">
@@ -47,8 +54,10 @@
     <label th:text="${seedout}">Seed値</label>
 </p>
 <p>
-    <label>データセット</label><br>
-    <textarea readonly="true" th:text="${dataset}"></textarea>
+    <label>データセット</label>
+    <input type="button" value="Copy" onclick="clipboardCopy()">
+    <br>
+    <textarea readonly="true" id="dataset" th:text="${dataset}"></textarea>
 </p>
 </body>
 </html>
