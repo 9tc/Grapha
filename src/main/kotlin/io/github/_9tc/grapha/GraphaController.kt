@@ -26,7 +26,6 @@ class GraphaController {
         model.addAttribute("vertices", form.vertices)
         model.addAttribute("percentage", form.percentage)
         model.addAttribute("hasLabel", form.hasLabel)
-        model["hasLabel"] = form.hasLabel
 
         val seed: Long = if(form.seed == null) (Math.random() * 1e10).toLong() else form.seed!!
         model.addAttribute("seedout", seed)
