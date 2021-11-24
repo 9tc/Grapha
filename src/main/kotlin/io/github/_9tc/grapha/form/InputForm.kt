@@ -17,6 +17,6 @@ class InputForm (
     @field:Max(9999999999)
     var seed: Long? = null,
 
-    var hasLabel : String? = null
+    var hasLabel: Boolean = false
         ){
 }
