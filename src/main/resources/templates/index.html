@@ -22,6 +22,10 @@
         <input id="percentage" name="percentage" type="number" size="40" th:min="0" th:max="100" th:value="${percentage} ? ${percentage} : 0"/>
     </p>
     <p>
+        <label for="seed">Seed値：</label>
+        <input id="seed" name="seed" type="text" size="10"th:value="${seed}"/>
+    </p>
+    <p>
         <input type="checkbox" id="hasLabel" name="hasLabel" value="checked" th:text="頂点にランダムラベルを付与"/>
     </p>
     <p>
@@ -36,6 +40,10 @@
 <p>
     <label>確率：</label>
     <label th:text="${percentage}">確率</label>%
+</p>
+<p>
+    <label>Seed値：</label>
+    <label th:text="${seed}">Seed値</label>
 </p>
 <p>
     <label>データセット</label><br>
