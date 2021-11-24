@@ -26,7 +26,8 @@
         <input id="seed" name="seed" type="text" size="10" th:value="${seed}"/>
     </p>
     <p>
-        <input type="checkbox" id="hasLabel" name="hasLabel" value="checked" th:text="頂点にランダムラベルを付与"/>
+        <input type="checkbox" id="hasLabel" name="hasLabel" th:checked="${hasLabel}"/>
+        <label for="hasLabel">頂点にランダムラベルを付与</label>
     </p>
     <p>
         <input type="submit" value="送信" />

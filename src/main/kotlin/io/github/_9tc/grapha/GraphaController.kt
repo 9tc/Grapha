@@ -4,6 +4,7 @@ import io.github._9tc.grapha.form.InputForm
 import io.github._9tc.grapha.service.CreateRandomGraphService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.ui.set
 import org.springframework.validation.BindingResult
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.ModelAttribute
@@ -25,12 +26,14 @@ class GraphaController {
         model.addAttribute("vertices", form.vertices)
         model.addAttribute("percentage", form.percentage)
         model.addAttribute("hasLabel", form.hasLabel)
+        model["hasLabel"] = form.hasLabel
 
         val seed: Long = if(form.seed == null) (Math.random() * 1e10).toLong() else form.seed!!
         model.addAttribute("seedout", seed)
         if(form.seed != null) model.addAttribute("seed", seed)
 
-        val hasLabel : Boolean = (form.hasLabel == "checked")
+
+        val hasLabel : Boolean = form.hasLabel
         model.addAttribute("dataset", CreateRandomGraphService(form.vertices!!, form.percentage!!).create(hasLabel, seed))
         return "index"
     }
