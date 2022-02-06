@@ -1,19 +1,22 @@
-package io.github._9tc.grapha
+package io.github._9tc.grapha.app.controller
 
-import io.github._9tc.grapha.form.InputForm
-import io.github._9tc.grapha.service.CreateRandomGraphService
+import io.github._9tc.grapha.domain.form.InputForm
+import io.github._9tc.grapha.domain.service.CreateRandomGraphService
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
-import org.springframework.ui.set
 import org.springframework.validation.BindingResult
 import org.springframework.validation.annotation.Validated
-import org.springframework.web.bind.annotation.ModelAttribute
 import org.springframework.web.bind.annotation.RequestMapping
-import kotlin.random.Random
 
 
 @Controller
-class GraphaController {
+class GraphaController(
+    @Autowired
+    val jdbcTemplate: JdbcTemplate
+) {
+
     @RequestMapping("/")
     fun index(): String {
         return "index"
@@ -31,9 +34,9 @@ class GraphaController {
         model.addAttribute("seedout", seed)
         if(form.seed != null) model.addAttribute("seed", seed)
 
-
         val hasLabel : Boolean = form.hasLabel
-        model.addAttribute("dataset", CreateRandomGraphService(form.vertices!!, form.percentage!!).create(hasLabel, seed))
+
+        model.addAttribute("dataset", CreateRandomGraphService().graph(jdbcTemplate, form.vertices!!, form.percentage!!, hasLabel, seed))
         return "index"
     }
 }

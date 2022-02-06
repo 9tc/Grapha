@@ -18,17 +18,20 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-validation")
-	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("org.springframework.boot:spring-boot-starter-validation:2.6.3")
+	implementation("org.springframework.boot:spring-boot-starter-thymeleaf:2.6.3")
+	implementation("org.springframework.boot:spring-boot-starter-web:2.6.3")
+	implementation("org.springframework.boot:spring-boot-starter-jdbc:2.6.3")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.1")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+	implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2")
+	runtimeOnly("org.postgresql:postgresql:42.3.1")
 
 	implementation(kotlin("stdlib", org.jetbrains.kotlin.config.KotlinCompilerVersion.VERSION)) // or "stdlib-jdk8"
 	implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:1.0-M1-1.4.0-rc") // JVM dependency
 
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.boot:spring-boot-starter-test:2.6.3")
 }
 
 tasks.withType<KotlinCompile> {

@@ -1,6 +1,5 @@
-package io.github._9tc.grapha.form
+package io.github._9tc.grapha.domain.form
 
-import org.hibernate.validator.constraints.Length
 import org.hibernate.validator.constraints.Range
 import javax.validation.constraints.*
 
